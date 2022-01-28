@@ -1,0 +1,17 @@
+FROM rust:1.55.0-buster
+
+# allow non-root user to download more deps later
+RUN chmod -R 777 /usr/local/cargo
+
+## COPY BUILD SCRIPTS
+
+WORKDIR /code
+
+COPY guest/*.sh /opt/
+RUN chmod +x /opt/*.sh
+
+RUN mkdir /.cargo
+RUN chmod +rx /.cargo
+COPY guest/cargo-config /.cargo/config
+
+CMD ["/opt/build_linux.sh"]
