@@ -45,7 +45,7 @@ docker-image-alpine:
 		--output $(OUTPUT)
 
 .PHONY: docker-images
-docker-images: docker-image-debian docker-image-cross docker-image-alpine
+docker-images: docker-image-debian docker-image-alpine
 
 .PHONY: docker-publish
 docker-publish: OUTPUT="type=registry"
